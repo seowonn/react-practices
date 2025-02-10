@@ -1,8 +1,8 @@
 {
   "name": "ex02",
   "version": "1.0.0",
-  "description": "",
-  "main": "",
+  "description": "1. 리액트 컴포넌트는 단일 루트 노드만 렌더링 할 수 있다.",
+  "main": "index.js",
   "scripts": {
     "start": "npx webpack serve --config config/webpack.config.js --progress --mode development",
     "build": "npm i && npx webpack --config config/webpack.config.js --mode production"
@@ -11,12 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.26.7",
-    "@babel/preset-env": "^7.26.7",
+    "@babel/core": "^7.26.8",
+    "@babel/preset-env": "^7.26.8",
     "@babel/preset-react": "^7.26.3",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
-    "sass": "^1.83.4",
+    "sass": "^1.84.0",
     "sass-loader": "^16.0.4",
     "style-loader": "^4.0.0",
     "webpack": "^5.97.1",

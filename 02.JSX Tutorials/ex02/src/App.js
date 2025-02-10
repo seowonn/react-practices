@@ -1,6 +1,6 @@
 import React from 'react';
 
-//*
+/*
 function App() {
     return (
         <div>
@@ -13,9 +13,9 @@ function App() {
 /*/
 
 // after component App transpiled 
-function App() {
-    return React.createElement('div', null, React.createElement('h2', null, 'Ex02'), React.createElement('p', null, '특징 II: Sigle Root'));
-}
+// function App() {
+//     return React.createElement('div', null, React.createElement('h2', null, 'Ex02'), React.createElement('p', null, '특징 II: Sigle Root'));
+// }
 
 //*/
 
