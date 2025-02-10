@@ -1,5 +1,13 @@
 ## Application Bundling
 
+#### 00. Webpack이란?
+Webpack은 JavaScript 모듈 번들러이다.
+여러 개의 JavaScript, CSS, 이미지 등 리소스를 하나(또는 최적화된 여러 개)의 파일로 묶어서 브라우저에서 효율적으로 로드할 수 있도록 해주는 도구이다. 
+
+Webpack을 사용하면 좋은점
+- 여러 개의 JS, CSS, 이미지 등을 하나의 번들 파일로 묶어 최적화가 가능하다.
+- 파일 간의 의존성을 자동으로 해결하여 순서 문제가 발생하지 않는다.
+- 코드를 압축하고 최적화하여 성능을 향상시킬 수 있다.  
 
 #### 01. Webpack Practices
 1. Bundling I: JS Module
