@@ -2,14 +2,15 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 
 function MyComponent({props01, props02, props03, props04, props05, props06, props07, props08, props09}) {
+    // 빈 String은 undefined, -- not set --으로 출력된다.
     return (
         <div>
             <h2>Property Validation</h2>
 
-            <span>props01: {'-- not set --'}</span>
+            <span>props01: {typeof(props01) !== 'undefined' ? props01 : '-- not set --'}</span>
             <br/>
 
-            <span>props02: {'-- not set --'}</span>
+            <span>props02: {typeof(props02) !== 'undefined' ? props02 : '-- not set --'}</span>
             <br/>
 
             <span>props03: {'-- not set --'}</span>
@@ -40,5 +41,10 @@ function MyComponent({props01, props02, props03, props04, props05, props06, prop
     );
 }
 
+// 데이터 타입 검증 역할
+MyComponent.propTypes = {
+    props01: PropTypes.string,
+    props02: PropTypes.number
+}
 
 export default MyComponent;
