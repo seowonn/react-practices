@@ -8,7 +8,14 @@ export default function Form() {
             id="loginForm"
             name="loginForm"
             method="post"
-            action="/do/not/post">
+            action="/do/not/post"
+            onSubmit={(e) => {
+                e.preventDefault();
+                
+                console.log(e.target.email.value, e.target.email.value);
+                console.log('validation code');
+                console.log('ajax signup');
+            }}>
 
             <label htmlFor="email">이메일</label>
             <input id="email" name="email" type="text" autoComplete="off" />
