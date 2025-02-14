@@ -1,5 +1,5 @@
 .Tab_Item {
-	float: right;
+    float: right;
 	border: 1px solid #999;
 	border-radius: 10px 10px 0 0;
 	width: 100px;
@@ -14,6 +14,5 @@
 
     &:global(.active) {
         background-color: #fc6;
-    }    
+    }
 }
-

@@ -5,7 +5,7 @@ module.exports = function(env) {
         mode: "none",
         entry: path.resolve('src/index.js'),
         output: {
-            path: path.resolve('public'),
+            path: path.resolve('../backend/src/main/resources'),
             filename: 'assets/js/main.js',
             assetModuleFilename: 'assets/images/[hash][ext]'
         },
@@ -22,6 +22,7 @@ module.exports = function(env) {
                 use:['style-loader', {
                         loader: 'css-loader',
                         options: {
+                            // true로 설정하면 SCSS, SCC 파일을 자동으로 "CSS 모듈" 방식으로 변환해서 사용할 수 있게 된다.
                             modules: true 
                         }
                     }, 'sass-loader']
