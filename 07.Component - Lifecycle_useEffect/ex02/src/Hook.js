@@ -38,12 +38,9 @@ export default function Hook({ color }) {
         console.log('After Mount(componentDidMount)');
 
         return () => {
-            
+            console.log('Before Unmount(componentWillUnmount');
         }
     }, []);
-
-
-
 
     // render
     return (
