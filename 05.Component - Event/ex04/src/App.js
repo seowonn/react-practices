@@ -1,76 +1,53 @@
 import React, { useRef } from 'react';
-import logo from './assets/images/react-logo.png';
+import logo from './assets/images/react-logo.png'
 
-export default function App() {
-
+function App(props) {
+    // useRef: React에서 DOM 요소에 직접 접근하거나, 렌더링과 관계없이 값을 저장할 떄 사용하는 Hook
     const imgRef = useRef(null);
 
-    const onKeyDownInput = (e) => {
-        if(e.key == 'Enter') {
-            console.log('key down: ' + e.target.value);
-        }
-    };
-
     const onKeyUpInput = (e) => {
-        if(e.key == 'Enter') {
-            console.log('key up: ' + e.target.value);
-        }
-    };
+        console.log("keyup " + e.target.value);
+    }
 
-    const onChangeInput = (e) => {
-        console.log('change: ' + e.target.value);
-    };
+    const onKeyDownInput = (e) => {
+        console.log("keydown " + e.target.value);
+    }
 
     const onFocusInput = (e) => {
-        console.log('focus: ' + e.target.value);
-    };
+        console.log("focus");
+    }
 
+    // 포커스(입력 커서)가 빠져나갈 때 발생하는 이벤트
     const onBlurInput = (e) => {
-        console.log('blur');
-    };
+        console.log("blur");
+    }
 
     const onMouseOverImg = (e) => {
         const offsetTop = imgRef.current.offsetTop;
         const offsetLeft = imgRef.current.offsetLeft;
 
-        console.log('mouseover', `x=${e.clientX} y=${e.clientY}`);
-    };
+        console.log(`onMouseOverImg x = ${e.clientX-offsetLeft} y = ${e.clientY - offsetTop}`);
+    }
 
     const onMouseMoveImg = (e) => {
-        console.log('mousemove', `x=${e.clientX} y=${e.clientY}`);
-    };
+        console.log(`onMouseMoveImg x = ${e.clientX} y = $${e.clientY}`)
+    }
 
     const onMouseOutImg = (e) => {
-        console.log('mouseout', `x=${e.clientX} y=${e.clientY}`);
-    };
-
-    const onMouseDownImg = (e) => {
-        console.log('mousedown', `x=${e.clientX} y=${e.clientY}`);
-    };
-
-    const onMouseUpImg = (e) => {
-        console.log('mouseup', `x=${e.clientX} y=${e.clientY}`);
-    };
-
-    const onClickImg = (e) => {
-        console.log('mouseclick', `x=${e.clientX} y=${e.clientY}`);
-    };
-
-    const onDoubleClickImg = (e) => {
-        console.log('mouse double click', `x=${e .clientX} y=${e.clientY}`);
-    };
+        console.log(`onMouseOutImg x = ${e.clientX} y = $${e.clientY}`)
+    }
 
     return (
         <>
             <h2>Event Handler 예제</h2>
             <input
                 type='text'
-                placeholder='메세지를 입력 하세요'
-                onKeyDown={onKeyDownInput}
+                placeholder='메세지를 입력하세요'
                 onKeyUp={onKeyUpInput}
-                onChange={onChangeInput}
+                onKeyDown={onKeyDownInput}
                 onFocus={onFocusInput}
-                onBlur={onBlurInput}/>
+                onBlur={onBlurInput}
+            />
             <br/>
             <br/>
             <img
@@ -80,14 +57,13 @@ export default function App() {
                     width: 190,
                     border: '1px solid #ccc'
                 }}
-                src={logo}
                 onMouseOver={onMouseOverImg}
                 onMouseMove={onMouseMoveImg}
                 onMouseOut={onMouseOutImg}
-                onMouseDown={onMouseDownImg}
-                onMouseUp={onMouseUpImg}
-                onClick={onClickImg}
-                onDoubleClick={onDoubleClickImg}/>
+                src={logo}
+            />
         </>
     );
 }
+
+export default App;

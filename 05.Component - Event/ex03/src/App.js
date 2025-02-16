@@ -1,7 +1,9 @@
 import React from 'react';
 
 export default function App() {
-
+    /**
+     * React에서는 브라우저의 기본 이벤트 백체를 SyntheticEvent라는 래퍼 객체로 감싼다.
+     */
 
     return (
         <>
