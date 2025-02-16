@@ -1,13 +1,16 @@
 import React from 'react';
-import Header from './Header';
-import './assets/scss/App.scss';
+import GroceryList from './GroceryList';
+import {title} from './assets/scss/App.scss';
 
-// 익명 함수를 통해 1개만 내보낼 수 있음.
-export default function() {
+function App(props) {
+    const groceries = [{name: 'milk', count: 10}, {name: 'egg', count: 20}, {name: 'bread', count: 5}];
+    
     return (
         <div id={'App'}>
-            <Header />
+            <h1 className={title}>{'Grocery List'}</h1>
+            <GroceryList groceries={groceries} />
         </div>
-    )
+    );
 }
 
+export default App;

@@ -3,7 +3,7 @@ import {App, Header} from './assets/scss/App.scss';
 
 
 export default function() {
-    // console.log(styles);
+    console.log(styles);
 
     return (
         <div id={'App'}>

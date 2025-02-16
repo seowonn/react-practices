@@ -1,23 +1,18 @@
 import React from 'react';
-import Header from './Header'
+import Header from './Header';
 import styled from 'styled-components';
 
-import './assets/scss/App.scss';
-
-const divApp = styled.div```
+const DivApp = styled.div`
     text-align: center;
     color: #111;
-```
+`;
 
 const App = function() {
     return (
         <DivApp>
-            <div id={'App'}>
-                <Header />  
-            </div>
+            <Header />
         </DivApp>
-
     );
 }
 
-export default App; 
+export default App;
