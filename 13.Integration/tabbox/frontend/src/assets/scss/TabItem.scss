@@ -1,5 +1,5 @@
 .Tab_Item {
-	float: right;
+    float: right;
 	border: 1px solid #999;
 	border-radius: 10px 10px 0 0;
 	width: 100px;
@@ -12,8 +12,8 @@
 	background-color: #ccc;
 	cursor: pointer;
 
+	// global 사용 이유: SCSS 모듈에서 네임스페이스 영향을 받지 않고, 글로벌하게 동작하는 .active를 적용하기 위함
     &:global(.active) {
         background-color: #fc6;
-    }    
+    }
 }
-
