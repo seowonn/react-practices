@@ -7,18 +7,15 @@ function CardList({ cardList, status }) {
     return (
         <div className={ Card_List }>
             <h1>{status}</h1>
-            {cardList.map((card) => (
-                <div key={card.no}>
+            {
+                cardList.map(card => 
                     <Card
                         key={card.no}
-                        no={card.no}
                         title={card.title}
                         description={card.description}
-                        status={card.status}
                         tasks={card.tasks}
-                        />
-                </div>
-            ))}
+                    />
+            )}
         </div>
     );
 }

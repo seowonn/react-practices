@@ -1,13 +1,21 @@
-import React from "react";
-import { _Card } from './assets/scss/Card.scss';
-import CardTitle from "./CardTitle";
-import CardDetails from "./CardDetails";
+import React, { useState } from "react";
+import { _Card, Card_Title, Card_Title_Open } from './assets/scss/Card.scss';
+import TaskList from './TaskList';
 
-function Card({no, title, description, status, tasks}) {
+function Card({ title, description, tasks}) {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div className={ _Card }>
-            <CardTitle title={title} />
-            <CardDetails description={description} tasks={tasks} />
+            <div
+                className={ isOpen ? [Card_Title, Card_Title_Open].join(' ') : Card_Title }
+                onClick={() => setIsOpen(!isOpen)}>
+                {title}
+            </div>
+            <div>
+                {description}
+                {isOpen && <TaskList tasks={tasks} />}
+            </div>
         </div>
     );
 }
