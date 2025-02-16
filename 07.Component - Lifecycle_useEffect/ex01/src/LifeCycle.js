@@ -13,8 +13,8 @@ export default class LifeCircle extends Component {
     }
 
     /**
-     *
-     *  props로 받아온 값을 state에 동기화 한다.[react v16.3]
+     *  props로 받아온 값을 state에 동기화 한다.[react v16.3], 사용자가 직접 정의해야 실행됨
+     *  return문을 통해 state 여부를 결정. 즉, null을 반환한다는 의미는 state를 변경하지 않는다는 의미
      */
     static getDerivedStateFromProps(nextProps, prevState) {
         console.log(`[MOUNT 2][UPDATE 1][UNMOUNT X]: getDerivedStateFromProps(nextProps=${nextProps.color}, prevState=${prevState.color})`);
@@ -22,7 +22,7 @@ export default class LifeCircle extends Component {
     }
 
     /**
-     *
+     *  React 내장 LifeCycle 메서드로, 불필요한 렌더링을 방지하여 React 성능을 최적화할 수 있다. 
      *  props state을 변경 했을 때, re-rendering 여부(반환값 true: 한다. false: 안한다)를 결정한다.
      *  현재 데이터: this.props, this.state
      *  변경 데이터: nextProps, nextState
@@ -35,13 +35,19 @@ export default class LifeCircle extends Component {
         return true;
     }
 
+    // render()는 클래스형 컴포넌트에서 '반드시!! 정의해야 하는 필수 메서드이다. 컴포넌트가 UI를 반환하는 역할
+    /**
+     *  ref={ref => this.h3Ref = ref} 의미
+     *  -> h3 태그의 DOM 요소 자체를 반환하고 이를 this.h3Ref에 할당하는 것
+     */
     render() {
         console.log('[MOUNT 3][UPDATE 3][UNMOUNT X]: render()');
         return <h3 style={{backgroundColor: this.state.color, width: 100, height: 50}} ref={ref => this.h3Ref = ref}/>
     }
 
     /**
-     *
+     *  업데이트 과정에서 DOM이 변경되기 직전(render 실행 이후 == this.h3Ref 변경 적용 이후,
+     *   하지만 DOM(h3 태그)은 변경되지 않은 상태)에 실행되는 메서드
      *  render 메소드 호출 후, DOM에 변화를 반영하기 직전에 호출 [react v16.3]
      *  반환 값은 다음 메소드 componentDidUpdate()의 세번째 파라미터(snapshot)로 전달.
      *  변경 전의 props, state 접근이 가능하다.
@@ -53,7 +59,7 @@ export default class LifeCircle extends Component {
     }
 
     /**
-     *
+     *  때문에 snapshot는 업데이트 전의 상태이다!
      *  DOM 업데이트가 끝난 직후 호출 DOM 작업이 가능하다.
      *  변경 전의 state 값과 props값에 접근 가능
      */

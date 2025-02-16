@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import LifeCycle from './LifeCycle';
 
 export default function App() {
+    // useState는 React의 상태 기반 UI 개념을 활용한 방식
     const [color, setColor] = useState('#000000');
     const [show, setShow] = useState(true);
 
