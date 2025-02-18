@@ -17,6 +17,34 @@ const Item = styled.li``;
 ReactModal.setAppElement("body");
 
 function App() {
+    const refCreateForm = useRef(null);
+    const [items, setItems] = useState(null);
+    const addItem = async (item) => {
+        try {
+            const response = await fetch('/item', {
+                method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(item)
+            });
+
+            const jsonResult = await response.json();
+    
+            if(!response.ok || jsonResult.result === 'fail') {
+                throw new Error(`${response.status} ${response.message}`);
+            }
+
+            console.log(jsonResult.data);
+            setItems([jsonResult.data, ...items]);
+            refCreateForm.current.reset();
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     const fetchItems = async () => {
         try {
             const response = await fetch('/item', {
@@ -52,6 +80,7 @@ function App() {
 
             <div>
                 <form
+                    ref={refCreateForm}
                     onSubmit={(e) => {
                         e.preventDefault();
 

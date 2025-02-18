@@ -17,9 +17,32 @@ public class ItemController {
 		this.items = items;
 	}
 	
-	@GetMapping("/test")
-	public String test(@RequestAttribute int value) {
-		return "";
+	@PostMapping
+	public ResponseEntity<JsonResult<Item>> create(@RequestBody Item item){
+		log.info("Request[POST /api, Content-Type: application/json{}", item);
+		
+		Long maxId = Optional
+			.ofNullable(items.isEmpty() ? null : items.getFirst())
+			.map(t -> t.getId())
+			.orElse(0L);
+		
+//		Long maxId = items.getFirst().getId() + 1;
+		item.setId(maxId + 1);
+		items.addFirst(item);
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success(item));
+	}
+	
+	@GetMapping
+	public ResponseEntity<JsonResult<List<Item>>> read() {
+		log.info("Request[GET /api]");
+		return ResponseEntity
+			.status(HttpStatus.OK)
+			.body(JsonResult.success(items));
+	}
+	
 	}
 
 }
