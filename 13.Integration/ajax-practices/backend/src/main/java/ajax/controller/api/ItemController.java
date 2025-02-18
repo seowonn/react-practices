@@ -1,10 +1,15 @@
 package ajax.controller.api;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ajax.domain.Item;
+import ajax.dto.JsonResult;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -35,6 +40,19 @@ public class ItemController {
 				.body(JsonResult.success(item));
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<JsonResult<Item>> read(@PathVariable Long id) {
+		log.info("Request[GET /api/{}]", id);
+			
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success(items
+						.stream()
+						.filter(t -> t.getId() == id)
+						.findAny()
+						.orElse(null)));
+	}
+	
 	@GetMapping
 	public ResponseEntity<JsonResult<List<Item>>> read() {
 		log.info("Request[GET /api]");
@@ -43,6 +61,15 @@ public class ItemController {
 			.body(JsonResult.success(items));
 	}
 	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<JsonResult<Long>> delete(@PathVariable Long id) {
+		log.info("Request[DELETE /api/{}]", id);
+		
+		boolean result = items.removeIf(t -> t.getId() == id);
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(JsonResult.success(result ? id : -1));
 	}
 
 }
